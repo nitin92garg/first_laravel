@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 Route::post('/home', 'HomeController@saveuser')->name('create');
 Route::get('/home', 'HomeController@index');
+Route::get('/edit', 'HomeController@view')->name('view');
+Route::get('/edit/{id}', 'HomeController@viewUser')->name('edituser');
+Route::post('/edit/{id}', 'HomeController@updateUser')->name('updateuser');
+Route::post('/edit/delete/{id}', 'HomeController@deleteUser')->name('deleteuser');
 // Auth::routes(['register' => false,'password.request' => false, 'reset' => false]);
 // Route::get('/users', 'HomeController@showuser')->name('show');
 

@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -40,22 +41,24 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @if (Route::has('login'))
-                            <div class="top-right links">
+                            <div class="top-right links" style="margin-right: 200px">
                                 @auth
                                     <a href="{{ url('/home') }}">Create</a>
+                                    <a href="{{ url('/edit') }}">Edit</a>
+
                                 @else
                                     <a href="{{ route('login') }}">Login</a>
 
-                                    @if (Route::has('register'))
+                                    {{-- @if (Route::has('register'))
                                         <a href="{{ route('register') }}">Register</a>
-                                    @endif
+                                    @endif --}}
                                 @endauth
                             </div>
                         @endif
                         @guest
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            </li> --}}
                             {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -89,5 +92,19 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        
+        $('#delete').on('show.bs.modal',function(event){
+            var button = $(event.relatedTarget)
+            var del_id = button.data('delid')
+            var modal = $(this)
+
+            modal.find('.modal.body #del_id').val(del_id);
+        })
+
+    </script>    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>

@@ -33,8 +33,8 @@
                         @endforeach
                         </ul>
                     @endif
-
-                    <form method="POST" action="{{route('create')}}">
+                    {{-- action="{{route('create')}}" --}}
+                    <form method="POST" >
                         @csrf
                         <div class="form-group">
                             <div class="row">
@@ -61,7 +61,7 @@
                         <button type="submit" class="btn btn-primary">Create</button>
                         </div>
                         
-                      </form>
+                    </form>
 
                       
                 </div>
